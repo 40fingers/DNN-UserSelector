@@ -136,13 +136,10 @@
   <ItemGroup>
     <None Include="40Fingers.UserSelector.dnn" />
     <Content Include="msbuild\build.bat" />
+    <Content Include="custom.targets.sample" />
     <None Include="msbuild\Project.targets">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="_Installation\01.00.00\40Fingers.UserSelector.01.00.00.00.Install.zip" />
-    <Content Include="_Installation\01.00.00\40Fingers.UserSelector.01.00.00.00.Source.zip" />
-    <Content Include="_Installation\01.02.00\40Fingers.UserSelector.01.02.00.00.Install.zip" />
-    <Content Include="_Installation\01.01.00\40Fingers.UserSelector.01.01.00.00.Install.zip" />
     <Content Include="_Installation\01.03.00\40Fingers.UserSelector.01.03.00.00.Install.zip" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
