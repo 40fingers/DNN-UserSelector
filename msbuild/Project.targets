@@ -25,10 +25,6 @@
         <BinDir>$(MSBuildProjectDirectory)\bin</BinDir>
         <DnnInstallFolder>$(MSBuildProjectDirectory)\DNNInstall</DnnInstallFolder>
     </PropertyGroup>
-    <PropertyGroup>
-      <ImportPath>$(MSBuildProjectDirectory)\custom.targets</ImportPath>
-    </PropertyGroup>
-    <Import Project="$(ImportPath)" Condition=" Exists('$(ImportPath)') "/>
 
     <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" Condition="Exists('$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets')"/>
 
@@ -43,6 +39,17 @@
     </Target>
     <Target Name="AfterBuild">
         <CallTarget Targets="DeployFiles" />
+    </Target>
+    
+    <Target Name="ReadVariables">
+      <Message  Text="DnnInstallFolder is now $(DnnInstallFolder)" Importance="high"></Message>
+      <XmlRead Prefix="n"
+               Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
+               XPath="Custom/DnnPath"
+               XmlFileName="$(MSBuildProjectDirectory)\msbuild\custombuildparams.xml">
+        <Output TaskParameter="Value" PropertyName="DnnInstallFolder" />
+      </XmlRead>
+      <Message  Text="DnnInstallFolder set to $(DotNetNukeDir)" Importance="high"></Message>
     </Target>
     
     <!-- Set the version numbers in DNN file and Assembly -->
@@ -85,6 +92,8 @@
     </Target>
 
     <Target Name="DeployFiles">
+      <CallTarget Targets="ReadVariables" />
+
         <MakeDir Directories="$(InstallDir)\$(Major).$(Minor).$(Build)\" />
         
         <CallTarget Targets="RemoveZips" Condition="'$(ConfigurationName)'=='Release'" />

@@ -12,7 +12,7 @@
             <dnn:Label runat="server" ID="UserNameLabel" resourcekey="UserNameLabel"></dnn:Label>
             <div>
                 <asp:TextBox runat="server" ID="UserNameTextBox"></asp:TextBox>
-                <asp:LinkButton runat="server" Text="Switch" ID="SwitchToUserNameButton" CssClass="dnnPrimaryAction" OnClick="SwitchToUserNameButton_Click"></asp:LinkButton></li>
+                <asp:LinkButton runat="server" Text="Switch" ID="SwitchToUserNameButton" CssClass="dnnPrimaryAction" OnClick="SwitchToUserNameButton_Click"></asp:LinkButton>
             </div>
         </div>
         <div class="dnnFormItem" runat="server" id="SuperUsersPanel">

@@ -3,6 +3,8 @@ using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 using System.Diagnostics;
+using System.Linq;
+using DotNetNuke.Entities.Host;
 
 namespace FortyFingers.Library
 {
@@ -12,14 +14,14 @@ namespace FortyFingers.Library
         // 8 bytes randomly selected for both the Key and the Initialization Vector
         // the IV is used to encrypt the first block of text so that any repetitive 
         // patterns are not apparent
-        private static byte[] KEY_64 = new System.Text.UTF8Encoding().GetBytes("4Of1nGr5");
+        private static byte[] KEY_64 = new System.Text.UTF8Encoding().GetBytes(Host.GUID.Substring(0,8));
 
-        private static byte[] IV_64 = new System.Text.UTF8Encoding().GetBytes("t1M5t3P3");
+        private static byte[] IV_64 = new System.Text.UTF8Encoding().GetBytes(Host.GUID.Substring(8,8));
 
         // 24 byte or 192 bit key and IV for TripleDES
-        private static byte[] KEY_192 = new System.Text.UTF8Encoding().GetBytes("4Of1nG3r5 W3b 50luT10N5!");
+        private static byte[] KEY_192 = new System.Text.UTF8Encoding().GetBytes(Host.GUID.Substring(0,24));
 
-        private static byte[] IV_192 = new System.Text.UTF8Encoding().GetBytes("t1M0_P3T3r_5T3F@n_$)FGr5");
+        private static byte[] IV_192 = new System.Text.UTF8Encoding().GetBytes(Host.GUID.Reverse().ToString().Substring(0,24));
 
         // Standard DES encryption
         public static string Encrypt(string value)

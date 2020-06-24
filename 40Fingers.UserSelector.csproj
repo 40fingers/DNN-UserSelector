@@ -115,6 +115,7 @@
       <LastGenOutput>Settings.ascx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="License.htm" />
+    <Content Include="msbuild\custombuildparams.xml" />
     <Content Include="msbuild\version.txt" />
     <Content Include="ReleaseNotes.htm" />
     <Content Include="View.ascx" />
@@ -136,7 +137,6 @@
   <ItemGroup>
     <None Include="40Fingers.UserSelector.dnn" />
     <Content Include="msbuild\build.bat" />
-    <Content Include="custom.targets.sample" />
     <None Include="msbuild\Project.targets">
       <SubType>Designer</SubType>
     </None>
