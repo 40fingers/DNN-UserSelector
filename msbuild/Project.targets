@@ -180,7 +180,7 @@
         </CreateItem>
         <Copy SourceFiles="@(Assemblies)" DestinationFolder="$(DnnInstallFolder)\bin\" SkipUnchangedFiles="false" ContinueOnError="true" />
 
-        <CreateItem Include="$(DnnInstallFolder)\DesktopModules\40Fingers\Questionaire\**;">
+        <CreateItem Include="$(DnnInstallFolder)\DesktopModules\40Fingers\UserSelector\**;">
           <Output TaskParameter="Include" ItemName="deleteFiles" />
         </CreateItem>
         <Delete ContinueOnError="true" Files="@(deleteFiles)"></Delete>
@@ -209,9 +209,9 @@
 						          $(MSBuildProjectDirectory)\Documentation\*.txt;
 						          $(MSBuildProjectDirectory)\Documentation\*.htm;
                       $(MSBuildProjectDirectory)\Templates\**">
-          <Output TaskParameter="Include" ItemName="resources" />
+          <Output TaskParameter="Include" ItemName="ModuleFiles" />
         </CreateItem>
-        <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(DnnInstallFolder)\DesktopModules\40Fingers\Questionaire\%(RecursiveDir)" SkipUnchangedFiles="false" ContinueOnError="true" />
+        <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(DnnInstallFolder)\DesktopModules\40Fingers\UserSelector\%(RecursiveDir)" SkipUnchangedFiles="false" ContinueOnError="true" />
 
     </Target>
 </Project>

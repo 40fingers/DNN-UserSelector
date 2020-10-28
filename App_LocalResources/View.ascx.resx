@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EditModule.Action" xml:space="preserve">
     <value>Edit Module</value>
@@ -146,5 +146,11 @@
   </data>
   <data name="UserDeleted.Error" xml:space="preserve">
     <value>Can't switch to a user marked as deleted.</value>
+  </data>
+  <data name="NotAllowedToSwitchToUser.Error" xml:space="preserve">
+    <value>You are not allowed to switch to that user.</value>
+  </data>
+  <data name="AdminLabel.Text" xml:space="preserve">
+    <value>Login as Administrator:</value>
   </data>
 </root>

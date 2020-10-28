@@ -17,6 +17,7 @@
         </div>
         <div class="dnnFormItem" runat="server" id="SuperUsersPanel">
             <dnn:Label runat="server" ID="SuperUserLabel" resourcekey="SuperUserLabel"></dnn:Label>
+            <dnn:Label runat="server" ID="AdminLabel" resourcekey="AdminLabel"></dnn:Label>
             <asp:LinkButton runat="server" ID="SuperUserButton" OnClick="SuperUserButton_Click"></asp:LinkButton>
         </div>
     </fieldset>

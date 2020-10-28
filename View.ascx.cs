@@ -24,12 +24,13 @@ namespace FortyFingers.UserSelector
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ErrorLabel.Visible = false;
+
             // the module is visible if the "initialViewCookie" 
             // contains a role that's allowed to the module
             // or if the user is (or has been) SuperUser
             SelectUserDiv.Visible = InitialViewCookie.IsSuperUser || InitialViewCookie.UserRoles.Any(r => Config.AllowedRoles.Contains(r));
             NotAllowedLabel.Visible = !SelectUserDiv.Visible;
-
 
             // if the module is not visible, we're removing the cookie
             // that gives the user a chance to login as a different user
@@ -146,6 +147,9 @@ namespace FortyFingers.UserSelector
             SuperUsersPanel.Visible = InitialViewCookie.IsSuperUser || 
                 (Config.AllowAdminToAnyUser && InitialViewCookie.UserRoles.Contains(PortalSettings.AdministratorRoleName));
             if (!SuperUsersPanel.Visible) return;
+            
+            SuperUserLabel.Visible = InitialViewCookie.IsSuperUser;
+            AdminLabel.Visible = !SuperUserLabel.Visible;
 
             SuperUserButton.Text = String.Format(Localization.GetString("SuperUserButton", LocalResourceFile), InitialViewCookie.Username);
         }
@@ -195,9 +199,27 @@ namespace FortyFingers.UserSelector
 
         private void SelectUser(int userId)
         {
-            UserInfo MyUserInfo = UserController.GetUserById(PortalId, userId);
-            if ((MyUserInfo != null))
+            UserInfo switchToUser = UserController.GetUserById(PortalId, userId);
+            if ((switchToUser != null))
             {
+                // is the current user allowed to switch to this user?
+                if (switchToUser.IsSuperUser)
+                {
+                    // no switching between superusers
+                    ErrorLabel.Visible = true;
+                    ErrorLabel.Text = Localization.GetString("NotAllowedToSwitchToUser.Error", LocalResourceFile);
+                    return;
+                }
+
+                if (!InitialViewCookie.IsSuperUser && switchToUser.IsInRole(PortalSettings.AdministratorRoleName))
+                {
+                    // must have been administrator to be able to switch to an administrator
+                    if (!InitialViewCookie.UserRoles.Contains(PortalSettings.AdministratorRoleName))
+                    {
+                        return;
+                    }
+                }
+
                 //Remove user from cache
                 if (Page.User != null)
                 {
@@ -209,7 +231,7 @@ namespace FortyFingers.UserSelector
                 objPortalSecurity.SignOut();
 
                 // sign new user in
-                UserController.UserLogin(PortalId, MyUserInfo, PortalSettings.PortalName, Request.UserHostAddress, false);
+                UserController.UserLogin(PortalId, switchToUser, PortalSettings.PortalName, Request.UserHostAddress, false);
 
                 // redirect to current url
                 Response.Redirect(Request.RawUrl, true);
