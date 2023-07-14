@@ -106,7 +106,7 @@ namespace FortyFingers.UserSelector.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;Choose the roles allowed to use the module. This means the user has to be in one of these roles at some point during his login session.&lt;/p&gt;&lt;p&gt;This allows you to make the module available to anonymous users and still ensure that only selected roles will be able to switch their identity.&lt;/p&gt;&lt;p&gt;Selecting no roles will show the module to all users with view permissions in DotNetNuke&lt;/p&gt;.
+        ///   Looks up a localized string similar to &lt;p&gt;Choose the roles allowed to use the module. This means the user has to be in one of these roles at some point during his login session.&lt;/p&gt;&lt;p&gt;This allows you to make the module available to anonymous users and still ensure that only selected roles will be able to switch their identity.&lt;/p&gt;&lt;p&gt;Selecting no roles will show the module to all users with view permissions in DNN&lt;/p&gt;.
         /// </summary>
         internal static string plAllowedRoles_Help {
             get {

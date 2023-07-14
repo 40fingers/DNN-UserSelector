@@ -49,7 +49,7 @@
                XmlFileName="$(MSBuildProjectDirectory)\msbuild\custombuildparams.xml">
         <Output TaskParameter="Value" PropertyName="DnnInstallFolder" />
       </XmlRead>
-      <Message  Text="DnnInstallFolder set to $(DotNetNukeDir)" Importance="high"></Message>
+      <Message  Text="DnnInstallFolder set to $(DnnInstallFolder)" Importance="high"></Message>
     </Target>
     
     <!-- Set the version numbers in DNN file and Assembly -->
@@ -194,12 +194,12 @@
 						          $(MSBuildProjectDirectory)\**\My Project\**;
 						          $(MSBuildProjectDirectory)\Dependencies\**;
 						          $(MSBuildProjectDirectory)\**\Properties\**;
-						          $(MSBuildProjectDirectory)\*.dnn;
 						          $(MSBuildProjectDirectory)\**\msbuild\**"
                     Include="$(MSBuildProjectDirectory)\**\*.ascx;
 						          $(MSBuildProjectDirectory)\**\*.aspx;
 						          $(MSBuildProjectDirectory)\**\*.ashx;
 						          $(MSBuildProjectDirectory)\**\*.css;
+						          $(MSBuildProjectDirectory)\*.dnn;
 						          $(MSBuildProjectDirectory)\**\*.js;
 				  	          $(MSBuildProjectDirectory)\**\*.resx;
 						          $(MSBuildProjectDirectory)\**\*.rdlc;

@@ -33,14 +33,14 @@
             <table runat="server" id="AvailableUsersTable">
                 <tr>
                     <td valign="top">
-                        <asp:ListBox runat="server" ID="lstAllUsers" SelectionMode="Multiple" Width="300px" Height="400px" />
+                        <asp:ListBox runat="server" ID="lstAllUsers" SelectionMode="Multiple" Width="300px" Height="200px" />
                     </td>
                     <td valign="top">
                         <asp:Button runat="server" ID="btnAddUsers" Text=">" OnClick="btnAddUsers_Click" /><br/>
                         <asp:Button runat="server" ID="btnRemoveUsers" Text="<" OnClick="btnRemoveUsers_Click"/>
                     </td>
                     <td valign="top">
-                        <asp:ListBox runat="server" ID="lstSelectedUsers" SelectionMode="Multiple" Width="300px" Height="400px" />
+                        <asp:ListBox runat="server" ID="lstSelectedUsers" SelectionMode="Multiple" Width="300px" Height="200px" />
                     </td>
                 </tr>
             </table>
