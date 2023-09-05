@@ -203,7 +203,7 @@ namespace FortyFingers.UserSelector
             if ((switchToUser != null))
             {
                 // is the current user allowed to switch to this user?
-                if (switchToUser.IsSuperUser)
+                if (switchToUser.IsSuperUser && UserInfo.IsSuperUser)
                 {
                     // no switching between superusers
                     ErrorLabel.Visible = true;
